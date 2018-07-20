@@ -1,19 +1,9 @@
-package site.qipeng.wxapi.entity;
+package site.qipeng.wxapi.entity.vo;
 
-import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
-
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.Id;
-import java.io.Serializable;
 import java.util.Date;
 
-@Entity
-@JsonIgnoreProperties({"hibernateLazyInitializer", "handler"})
-public class Comment implements Serializable {
+public class CommentVO {
 
-    @Id
-    @GeneratedValue
     private Integer id;
 
     private Integer userId;
@@ -23,6 +13,20 @@ public class Comment implements Serializable {
     private Date createTime;
 
     private String content;
+
+    private String nickname;
+
+    private String headImg;
+
+    public CommentVO(Integer id, Integer userId, Integer videoId, Date createTime, String content, String nickname, String headImg) {
+        this.id = id;
+        this.userId = userId;
+        this.videoId = videoId;
+        this.createTime = createTime;
+        this.content = content;
+        this.nickname = nickname;
+        this.headImg = headImg;
+    }
 
     public Integer getId() {
         return id;
@@ -38,6 +42,22 @@ public class Comment implements Serializable {
 
     public void setUserId(Integer userId) {
         this.userId = userId;
+    }
+
+    public String getNickname() {
+        return nickname;
+    }
+
+    public void setNickname(String nickname) {
+        this.nickname = nickname;
+    }
+
+    public String getHeadImg() {
+        return headImg;
+    }
+
+    public void setHeadImg(String headImg) {
+        this.headImg = headImg;
     }
 
     public Integer getVideoId() {
@@ -61,14 +81,16 @@ public class Comment implements Serializable {
     }
 
     public void setContent(String content) {
-        this.content = content == null ? null : content.trim();
+        this.content = content;
     }
 
     @Override
     public String toString() {
-        return "Comment{" +
+        return "CommentVO{" +
                 "id=" + id +
                 ", userId=" + userId +
+                ", nickname='" + nickname + '\'' +
+                ", headImg='" + headImg + '\'' +
                 ", videoId=" + videoId +
                 ", createTime=" + createTime +
                 ", content='" + content + '\'' +

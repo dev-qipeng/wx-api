@@ -1,21 +1,10 @@
-package site.qipeng.wxapi.entity;
+package site.qipeng.wxapi.entity.vo;
 
+import site.qipeng.wxapi.entity.Video;
 
-import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
-import com.fasterxml.jackson.annotation.JsonInclude;
-
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.Id;
-import java.io.Serializable;
 import java.util.Date;
 
-@Entity
-@JsonIgnoreProperties({"hibernateLazyInitializer", "handler"})
-//@JsonInclude(JsonInclude.Include.NON_NULL)
-public class Video implements Serializable {
-    @Id
-    @GeneratedValue
+public class VideoVO {
     private Integer id;
 
     private String name;
@@ -38,6 +27,22 @@ public class Video implements Serializable {
 
     private Date updateTime;
 
+    private boolean like;
+
+    public VideoVO(Video video) {
+        this.id = video.getId();
+        this.name = video.getName();
+        this.categoryId = video.getCategoryId();
+        this.description = video.getDescription();
+        this.poster = video.getPoster();
+        this.url = video.getUrl();
+        this.score = video.getScore();
+        this.likeNum = video.getLikeNum();
+        this.playNum = video.getPlayNum();
+        this.createTime = video.getCreateTime();
+        this.updateTime = video.getUpdateTime();
+    }
+
     public Integer getId() {
         return id;
     }
@@ -51,7 +56,7 @@ public class Video implements Serializable {
     }
 
     public void setName(String name) {
-        this.name = name == null ? null : name.trim();
+        this.name = name;
     }
 
     public Integer getCategoryId() {
@@ -67,7 +72,7 @@ public class Video implements Serializable {
     }
 
     public void setDescription(String description) {
-        this.description = description == null ? null : description.trim();
+        this.description = description;
     }
 
     public String getPoster() {
@@ -75,7 +80,7 @@ public class Video implements Serializable {
     }
 
     public void setPoster(String poster) {
-        this.poster = poster == null ? null : poster.trim();
+        this.poster = poster;
     }
 
     public String getUrl() {
@@ -83,7 +88,7 @@ public class Video implements Serializable {
     }
 
     public void setUrl(String url) {
-        this.url = url == null ? null : url.trim();
+        this.url = url;
     }
 
     public Double getScore() {
@@ -124,5 +129,31 @@ public class Video implements Serializable {
 
     public void setUpdateTime(Date updateTime) {
         this.updateTime = updateTime;
+    }
+
+    public boolean isLike() {
+        return like;
+    }
+
+    public void setLike(boolean like) {
+        this.like = like;
+    }
+
+    @Override
+    public String toString() {
+        return "VideoVO{" +
+                "id=" + id +
+                ", name='" + name + '\'' +
+                ", categoryId=" + categoryId +
+                ", description='" + description + '\'' +
+                ", poster='" + poster + '\'' +
+                ", url='" + url + '\'' +
+                ", score=" + score +
+                ", likeNum=" + likeNum +
+                ", playNum=" + playNum +
+                ", createTime=" + createTime +
+                ", updateTime=" + updateTime +
+                ", like=" + like +
+                '}';
     }
 }

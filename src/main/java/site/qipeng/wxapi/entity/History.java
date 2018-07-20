@@ -10,17 +10,19 @@ import java.util.Date;
 
 @Entity
 @JsonIgnoreProperties({"hibernateLazyInitializer", "handler"})
-public class Category implements Serializable {
-
+public class History implements Serializable {
     @Id
     @GeneratedValue
     private Integer id;
 
-    private String name;
+    private Integer userId;
+
+    private Integer videoId;
 
     private Date createTime;
 
-    private Date updateTime;
+    public History() {
+    }
 
     public Integer getId() {
         return id;
@@ -30,12 +32,20 @@ public class Category implements Serializable {
         this.id = id;
     }
 
-    public String getName() {
-        return name;
+    public Integer getUserId() {
+        return userId;
     }
 
-    public void setName(String name) {
-        this.name = name == null ? null : name.trim();
+    public void setUserId(Integer userId) {
+        this.userId = userId;
+    }
+
+    public Integer getVideoId() {
+        return videoId;
+    }
+
+    public void setVideoId(Integer videoId) {
+        this.videoId = videoId;
     }
 
     public Date getCreateTime() {
@@ -46,11 +56,13 @@ public class Category implements Serializable {
         this.createTime = createTime;
     }
 
-    public Date getUpdateTime() {
-        return updateTime;
-    }
-
-    public void setUpdateTime(Date updateTime) {
-        this.updateTime = updateTime;
+    @Override
+    public String toString() {
+        return "History{" +
+                "id=" + id +
+                ", userId=" + userId +
+                ", videoId=" + videoId +
+                ", createTime=" + createTime +
+                '}';
     }
 }

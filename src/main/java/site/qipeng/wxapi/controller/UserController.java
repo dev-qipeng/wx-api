@@ -41,7 +41,7 @@ public class UserController {
         }
         userService.setAuthToken(response, user.getToken());
 
-        return JsonResultUtil.getObjectJson(userInfo);
+        return JsonResultUtil.getObjectJson(user);
     }
 
 }

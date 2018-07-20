@@ -10,7 +10,7 @@ import java.util.Date;
 
 @Entity
 @JsonIgnoreProperties({"hibernateLazyInitializer", "handler"})
-public class Comment implements Serializable {
+public class Collection implements Serializable {
 
     @Id
     @GeneratedValue
@@ -21,8 +21,6 @@ public class Comment implements Serializable {
     private Integer videoId;
 
     private Date createTime;
-
-    private String content;
 
     public Integer getId() {
         return id;
@@ -54,24 +52,5 @@ public class Comment implements Serializable {
 
     public void setCreateTime(Date createTime) {
         this.createTime = createTime;
-    }
-
-    public String getContent() {
-        return content;
-    }
-
-    public void setContent(String content) {
-        this.content = content == null ? null : content.trim();
-    }
-
-    @Override
-    public String toString() {
-        return "Comment{" +
-                "id=" + id +
-                ", userId=" + userId +
-                ", videoId=" + videoId +
-                ", createTime=" + createTime +
-                ", content='" + content + '\'' +
-                '}';
     }
 }

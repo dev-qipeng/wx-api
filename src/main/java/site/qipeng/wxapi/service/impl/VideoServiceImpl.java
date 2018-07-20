@@ -77,4 +77,9 @@ public class VideoServiceImpl implements VideoService {
 
         return videoRepository.findAll(spec,pageable);
     }
+
+    @Override
+    public List<Video> findByVideoIdIn(List<Integer> videoIds) {
+        return videoRepository.findByIdIn(videoIds);
+    }
 }

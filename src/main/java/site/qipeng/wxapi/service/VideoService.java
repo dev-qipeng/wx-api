@@ -15,4 +15,6 @@ public interface VideoService {
     List<Banner> findBannerAll();
 
     Page<Video> search(Map<String,Object> param, Integer pageNum, Integer pageSize);
+
+    List<Video> findByVideoIdIn(List<Integer> videoIds);
 }
