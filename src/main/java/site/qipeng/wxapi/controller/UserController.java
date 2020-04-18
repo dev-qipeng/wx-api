@@ -34,6 +34,11 @@ public class UserController {
         String openId = (String)map.get("openid");
         User user = userService.findByOpenId(openId);
         if(user == null){
+            user = new User();
+            user.setNickname(userInfo.getNickname());
+            user.setPassword("123");
+            user.setHeadImg(userInfo.getHeadImg());
+            user.setSex(userInfo.getSex());
             user.setOpenId(openId);
             user.setToken(DigestUtils.md5DigestAsHex(openId.getBytes()));
             user.setCreateTime(new Date());
